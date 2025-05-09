@@ -22,10 +22,6 @@ public class DoctorEntity {
 
     private String especialidad;
 
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<CitaEntity> citas = new ArrayList<>();
-
     public DoctorEntity() {
     }
 
@@ -75,13 +71,5 @@ public class DoctorEntity {
 
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
-    }
-
-    public List<CitaEntity> getCitas() {
-        return citas;
-    }
-
-    public void setCitas(List<CitaEntity> citas) {
-        this.citas = citas;
     }
 }

@@ -1,32 +1,22 @@
-package com.kosmos.consultorio.infrastructure.adpter.persistence.entity;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+package com.kosmos.consultorio.domain.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-@Entity
-public class CitaEntity {
+public class Cita {
 
-    @Id
-    @GeneratedValue
     private Integer id;
-
     private Integer idConsultorio;
-
     private Integer idDoctor;
-
     private LocalDate fechaConsulta;
-
     private LocalTime horaConsulta;
-
     private String nombrePaciente;
 
-    public CitaEntity() {}
+    public Cita() {
+    }
 
-    public CitaEntity(Integer idConsultorio, Integer idDoctor, LocalDate fechaConsulta, LocalTime horaConsulta, String nombrePaciente) {
+    public Cita(Integer id, Integer idConsultorio, Integer idDoctor, LocalDate fechaConsulta, LocalTime horaConsulta, String nombrePaciente) {
+        this.id = id;
         this.idConsultorio = idConsultorio;
         this.idDoctor = idDoctor;
         this.fechaConsulta = fechaConsulta;

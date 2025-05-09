@@ -18,10 +18,6 @@ public class ConsultorioEntity {
 
     private Integer piso;
 
-    @OneToMany(mappedBy = "consultorio", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonManagedReference
-    private List<CitaEntity> citas = new ArrayList<>();
-
     public ConsultorioEntity() {
     }
 
@@ -52,13 +48,5 @@ public class ConsultorioEntity {
 
     public void setPiso(Integer piso) {
         this.piso = piso;
-    }
-
-    public List<CitaEntity> getCitas() {
-        return citas;
-    }
-
-    public void setCitas(List<CitaEntity> citas) {
-        this.citas = citas;
     }
 }
