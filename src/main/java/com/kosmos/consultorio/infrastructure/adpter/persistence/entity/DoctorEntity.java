@@ -25,8 +25,7 @@ public class DoctorEntity {
     public DoctorEntity() {
     }
 
-    public DoctorEntity(Integer id, String nombre, String apellidoPaterno, String apellidoMaterno, String especialidad) {
-        this.id = id;
+    public DoctorEntity(String nombre, String apellidoPaterno, String apellidoMaterno, String especialidad) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
