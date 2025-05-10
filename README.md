@@ -44,13 +44,13 @@ La base de datos H2:
 Usuario: sa  
 Contraseña: (sin contraseña)  
 
-🔗 http://localhost:8080/h2-console  
+🔗 http://localhost:7000/h2-console  
 
 ## API Endpoints
 
 ### 1. Crear nueva cita
 ```http
-PUT /api/cita/nueva
+PUT /api/cita
 
 {
     "idConsultorio": 1,
@@ -63,7 +63,7 @@ PUT /api/cita/nueva
 
 ### 2. Actualizar cita
 ```http
-PUT /api/cita/nueva
+PATCH /api/cita/{idCita}
 
 {
     "idConsultorio": 1,
@@ -72,4 +72,15 @@ PUT /api/cita/nueva
     "horaConsulta": "05:40:00",
     "nombrePaciente": "Pedro"
 }
+```
+
+### 3. Borrar cita
+```http
+DELETE /api/cita/{idCita}
+```
+
+### 4. Buscar cita
+```http
+//Todos los parámetros son opcionales, reemplazar {} por el valor a buscar
+DELETE /api/cita?idDoctor={id}&idConsultorio={id}&fecha={YYYY-MM-DD}&hora={hh:mm:ss}&nombrePaciente={nombrePaciente}
 ```
