@@ -1,6 +1,7 @@
 package com.kosmos.consultorio.domain.service;
 
 import com.kosmos.consultorio.application.port.input.CreateCitaUseCase;
+import com.kosmos.consultorio.application.port.input.DeleteCitaUseCase;
 import com.kosmos.consultorio.application.port.input.GetCitaUseCase;
 import com.kosmos.consultorio.application.port.input.UpdateCitaUseCase;
 import com.kosmos.consultorio.application.port.output.CitaOutputPort;
@@ -19,6 +20,7 @@ import java.util.List;
 public class CitaService implements
         CreateCitaUseCase,
         UpdateCitaUseCase,
+        DeleteCitaUseCase,
         GetCitaUseCase
 {
     private final CitaOutputPort citaOutputPort;
@@ -39,6 +41,11 @@ public class CitaService implements
 
         checkCitaSchedulable(idCita, cita);
         citaOutputPort.updateCita(idCita, cita);
+    }
+
+    @Override
+    public void deleteCita(Integer idCita){
+        citaOutputPort.deleteCita(idCita);
     }
 
     @Override

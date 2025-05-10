@@ -1,6 +1,7 @@
 package com.kosmos.consultorio.interfaces.adapter.rest;
 
 import com.kosmos.consultorio.application.port.input.CreateCitaUseCase;
+import com.kosmos.consultorio.application.port.input.DeleteCitaUseCase;
 import com.kosmos.consultorio.application.port.input.GetCitaUseCase;
 import com.kosmos.consultorio.application.port.input.UpdateCitaUseCase;
 import com.kosmos.consultorio.domain.model.request.CitaRequest;
@@ -16,10 +17,12 @@ public class CitaRestAdapter {
 
     private final CreateCitaUseCase createCitaUseCase;
     private final UpdateCitaUseCase updateCitaUseCase;
+    private final DeleteCitaUseCase deleteCitaUseCase;
 
-    public CitaRestAdapter(CreateCitaUseCase createCitaUseCase, UpdateCitaUseCase updateCitaUseCase) {
+    public CitaRestAdapter(CreateCitaUseCase createCitaUseCase, UpdateCitaUseCase updateCitaUseCase, DeleteCitaUseCase deleteCitaUseCase) {
         this.createCitaUseCase = createCitaUseCase;
         this.updateCitaUseCase = updateCitaUseCase;
+        this.deleteCitaUseCase = deleteCitaUseCase;
     }
 
     @PutMapping("/nueva")
@@ -35,6 +38,14 @@ public class CitaRestAdapter {
             @RequestBody CitaRequest cita
     ){
         updateCitaUseCase.updateCita(idCita, cita);
+        return ResponseEntity.ok().build();
+    }
+
+    @PatchMapping("/{idCita}/borrar")
+    public ResponseEntity<Void> deleteCita(
+            @PathVariable Integer idCita
+    ){
+        deleteCitaUseCase.deleteCita(idCita);
         return ResponseEntity.ok().build();
     }
 }
