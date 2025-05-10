@@ -45,7 +45,7 @@ public interface CitaRepository extends JpaRepository<CitaEntity, Integer> {
         AND (:horaConsulta IS NULL OR c.horaConsulta = :horaConsulta)
         AND (:nombrePaciente IS NULL OR c.nombrePaciente = :nombrePaciente)
     """)
-    List<CitaEntity> findByIdDoctorAndIdConsultorioAndFechaConsultaAndHoraConsulta(
+    List<CitaEntity> findByIdDoctorAndIdConsultorioAndFechaConsultaAndHoraConsultaAndNombrePaciente(
             Integer idDoctor,
             Integer idConsultorio,
             LocalDate fechaConsulta,
