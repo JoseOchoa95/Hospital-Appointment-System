@@ -60,6 +60,7 @@ PUT /api/cita
     "nombrePaciente": "Pedro"
 }
 ```
+Devuelve el id de la cita creada
 
 ### 2. Actualizar cita
 ```http
