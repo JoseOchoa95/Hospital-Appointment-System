@@ -82,5 +82,5 @@ DELETE /api/cita/{idCita}
 ### 4. Buscar cita
 ```http
 //Todos los parámetros son opcionales, reemplazar {} por el valor a buscar
-DELETE /api/cita?idDoctor={id}&idConsultorio={id}&fecha={YYYY-MM-DD}&hora={hh:mm:ss}&nombrePaciente={nombrePaciente}
+GET /api/cita?idDoctor={id}&idConsultorio={id}&fecha={YYYY-MM-DD}&hora={hh:mm:ss}&nombrePaciente={nombrePaciente}
 ```
