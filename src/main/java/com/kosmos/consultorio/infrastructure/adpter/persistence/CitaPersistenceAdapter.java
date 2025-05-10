@@ -4,6 +4,7 @@ import com.kosmos.consultorio.application.port.output.CitaOutputPort;
 import com.kosmos.consultorio.domain.error.exceptions.NotFoundException;
 import com.kosmos.consultorio.domain.model.Cita;
 import com.kosmos.consultorio.domain.model.request.CitaRequest;
+import com.kosmos.consultorio.domain.model.response.CitaResponse;
 import com.kosmos.consultorio.infrastructure.adpter.persistence.entity.CitaEntity;
 import com.kosmos.consultorio.infrastructure.adpter.persistence.mapper.CitaMapper;
 import com.kosmos.consultorio.infrastructure.adpter.persistence.repositories.CitaRepository;
@@ -96,5 +97,14 @@ public class CitaPersistenceAdapter implements CitaOutputPort {
         }
 
         return null;
+    }
+
+    @Override
+    public List<CitaResponse> findCitaByFechaAndConsultorioAndDoctor(Integer idDoctor, Integer idConsultorio, LocalDate fecha, LocalTime hora) {
+        return citaRepository
+                .findByIdDoctorAndIdConsultorioAndFechaConsultaAndHoraConsulta(idDoctor, idConsultorio, fecha, hora)
+                .stream()
+                .map(CitaResponse::toResponse)
+                .toList();
     }
 }

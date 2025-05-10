@@ -9,6 +9,7 @@ import com.kosmos.consultorio.domain.error.exceptions.PreconditionFailedExceptio
 import com.kosmos.consultorio.domain.model.Cita;
 import com.kosmos.consultorio.domain.model.request.CitaRequest;
 import com.kosmos.consultorio.domain.model.response.CitaCompletaResponse;
+import com.kosmos.consultorio.domain.model.response.CitaResponse;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -49,7 +50,10 @@ public class CitaService implements
     }
 
     @Override
-    public List<CitaCompletaResponse> getCita(LocalDate fecha, Integer numeroConsultorio, String nombreDoctor){
+    public List<CitaCompletaResponse> getCita(Integer idDoctor, Integer idConsultorio, LocalDate fecha, LocalTime hora){
+
+        List<CitaResponse> list = citaOutputPort.findCitaByFechaAndConsultorioAndDoctor(idDoctor, idConsultorio, fecha, hora);
+
         return new ArrayList<>();
     }
 
