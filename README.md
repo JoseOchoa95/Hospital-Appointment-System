@@ -1,15 +1,61 @@
-# Hospital-Appointment-System
-Sistema web para gestionar citas médicas en un hospital, desarrollado con Spring Boot  siguiendo el patrón MVC. Permite registrar doctores, consultorios y gestionar citas con validaciones específicas.
+# Sistema de Gestión de Citas Médicas 🏥
 
-Debido a falta de tiempo, se realizó un APIRestfull, falta la parte del renderizado y maquetado con Thymeleaf.
-Para la base se utiliza H2 (accesible desde localhost:puerto/h2-console) y se indicó una clase para la carga inicial
-de datos dentro de infrastrcuture->init.
-La arquitectura utilizada es la hexagonal con enfoque en el DDD.
+[![Java](https://img.shields.io/badge/Java-21-blue.svg)](https://www.java.com/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen.svg)](https://spring.io/projects/spring-boot)
 
-# Testeo de la API
+Sistema web para gestionar citas médicas en un hospital, desarrollado con Spring Boot siguiendo el patrón MVC y arquitectura hexagonal con enfoque DDD.
 
-Ruta: PUT -> localhost:puerto/api/cita/nueva
-RequestBody:
+## Características principales ✨
+
+- Registro y gestión de doctores
+- Administración de consultorios
+- Sistema de citas médicas con validaciones
+- API RESTful completa
+- Base de datos H2 embebida
+- Carga inicial de datos automatizada
+
+## Tecnologías utilizadas 🛠️
+
+- **Backend**: Spring Boot 3.2.0
+- **Lenguaje**: Java 21
+- **Base de datos**: H2 (embebida)
+- **Arquitectura**: Hexagonal + DDD
+- **Patrón**: MVC
+
+## Estructura del proyecto 📂
+
+src/
+├── main/
+│ ├── java/
+│ │ └── com/
+│ │ └── hospital/
+│ │ ├── application/ # Capa de aplicación
+│ │ ├── domain/ # Lógica de negocio
+│ │ ├── infrastructure/ # Adaptadores e infraestructura
+│ │ └── HospitalApplication.java
+│ └── resources/
+│ ├── static/
+│ └── templates/
+└── test/ # Pruebas
+
+## Configuración inicial ⚙️
+
+1. Clonar el repositorio
+2. Asegurarse de tener Java 21 instalado
+3. Inicializar la clase ConsultorioApplication
+
+La base de datos H2 estará disponible en:
+🔗 http://localhost:8080/h2-console
+Usuario: sa
+Contraseña: (sin contraseña)
+
+
+## API Endpoints
+
+### 1. Crear nueva cita
+```http
+PUT /api/cita/nueva
+
 {
     "idConsultorio": 1,
     "idDoctor": 1,
@@ -17,15 +63,17 @@ RequestBody:
     "horaConsulta": "05:40:00",
     "nombrePaciente": "Pedro"
 }
+```
 
+### 2. Actualizar cita
+```http
+PUT /api/cita/nueva
 
-Ruta: PATCH -> localhost:puerto/api/cita/{idCita}/actualizar
-PathVariable: 1
-RequestBody:
 {
-    "idConsultorio": 2,
+    "idConsultorio": 1,
     "idDoctor": 1,
     "fechaConsulta": "2025-05-09",
     "horaConsulta": "05:40:00",
     "nombrePaciente": "Pedro"
 }
+```
