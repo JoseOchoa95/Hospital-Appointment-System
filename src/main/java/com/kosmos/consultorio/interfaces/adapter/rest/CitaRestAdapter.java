@@ -53,10 +53,10 @@ public class CitaRestAdapter {
 
     @GetMapping("/buscar")
     public ResponseEntity<Void> getCita(
-            @RequestParam Integer idDoctor,
-            @RequestParam Integer idConsultorio,
-            @RequestParam LocalDate fecha,
-            @RequestParam LocalTime hora
+            @RequestParam(required = false) Integer idDoctor,
+            @RequestParam(required = false) Integer idConsultorio,
+            @RequestParam(required = false) LocalDate fecha,
+            @RequestParam(required = false) LocalTime hora
     ){
         getCitaUseCase.getCita(idDoctor, idConsultorio, fecha, hora);
         return ResponseEntity.ok().build();
