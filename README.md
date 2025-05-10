@@ -24,18 +24,18 @@ Sistema web para gestionar citas médicas en un hospital, desarrollado con Sprin
 
 ## Estructura del proyecto 📂
 
-src/
-├── main/
-│ ├── java/
-│ │ └── com/
-│ │ └── hospital/
-│ │ ├── application/ # Capa de aplicación
-│ │ ├── domain/ # Lógica de negocio
-│ │ ├── infrastructure/ # Adaptadores e infraestructura
-│ │ └── HospitalApplication.java
-│ └── resources/
-│ ├── static/
-│ └── templates/
+src/  
+├── main/  
+│ ├── java/  
+│ │ └── com/  
+│ │ └── hospital/  
+│ │ ├── application/ # Capa de aplicación  
+│ │ ├── domain/ # Lógica de negocio  
+│ │ ├── infrastructure/ # Adaptadores e infraestructura  
+│ │ └── HospitalApplication.java  
+│ └── resources/  
+│ ├── static/  
+│ └── templates/  
 └── test/ # Pruebas
 
 ## Configuración inicial ⚙️
