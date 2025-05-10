@@ -45,6 +45,10 @@ Usuario: sa
 Contraseña: (sin contraseña)  
 
 🔗 http://localhost:7000/h2-console  
+![imagen](https://github.com/user-attachments/assets/4371d7c5-f48f-47ad-8669-da04fe840715)
+
+El JDBC es proporcionado por el log de H2, ya que se carga en memoria, adjunto la imagen de ejemplo de cómo obtener el jdbc  
+![imagen](https://github.com/user-attachments/assets/bf8c00d1-9749-49c3-ba49-f3c0edee23a0)
 
 ## API Endpoints
 
