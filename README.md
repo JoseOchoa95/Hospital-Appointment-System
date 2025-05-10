@@ -3,7 +3,7 @@
 [![Java](https://img.shields.io/badge/Java-21-blue.svg)](https://www.java.com/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen.svg)](https://spring.io/projects/spring-boot)
 
-Sistema web para gestionar citas médicas en un hospital, desarrollado con Spring Boot siguiendo el patrón MVC y arquitectura hexagonal con enfoque DDD.
+Sistema web para gestionar citas médicas en un hospital, desarrollado con Spring Boot siguiendo el patrón APIRestfull y arquitectura hexagonal con enfoque DDD.
 
 ## Características principales ✨
 
@@ -16,27 +16,22 @@ Sistema web para gestionar citas médicas en un hospital, desarrollado con Sprin
 
 ## Tecnologías utilizadas 🛠️
 
-- **Backend**: Spring Boot 3.2.0
+- **Backend**: Spring Boot 3.4.5
 - **Lenguaje**: Java 21
 - **Base de datos**: H2 (embebida)
 - **Arquitectura**: Hexagonal + DDD
-- **Patrón**: MVC
+- **Patrón**: APIRestfull
 
 ## Estructura del proyecto 📂
 
 src/  
 ├── main/  
-│ ├── java/  
-│ │ └── com/  
-│ │ └── hospital/  
-│ │ ├── application/ # Capa de aplicación  
-│ │ ├── domain/ # Lógica de negocio  
-│ │ ├── infrastructure/ # Adaptadores e infraestructura  
-│ │ └── HospitalApplication.java  
-│ └── resources/  
-│ ├── static/  
-│ └── templates/  
-└── test/ # Pruebas
+└──── java.com.kosmos.consultorio/  
+    ├── application/ # Capa de puertos  
+    ├── domain/ # Lógica de negocio  
+    ├── infrastructure/ # Infraestructura y persistencia  
+    ├── interfaces/ # Capa de adaptadores a clientes  
+    └── ConsultorioApplication.java  # Clase de entrada a al app
 
 ## Configuración inicial ⚙️
 
@@ -44,11 +39,12 @@ src/
 2. Asegurarse de tener Java 21 instalado
 3. Inicializar la clase ConsultorioApplication
 
-La base de datos H2 estará disponible en:
-🔗 http://localhost:8080/h2-console
-Usuario: sa
-Contraseña: (sin contraseña)
+La base de datos H2:
 
+Usuario: sa  
+Contraseña: (sin contraseña)  
+
+🔗 http://localhost:8080/h2-console  
 
 ## API Endpoints
 
