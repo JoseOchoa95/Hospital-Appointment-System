@@ -7,10 +7,13 @@ import com.kosmos.consultorio.domain.model.request.CitaRequest;
 import com.kosmos.consultorio.infrastructure.adpter.persistence.entity.CitaEntity;
 import com.kosmos.consultorio.infrastructure.adpter.persistence.mapper.CitaMapper;
 import com.kosmos.consultorio.infrastructure.adpter.persistence.repositories.CitaRepository;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -77,5 +80,21 @@ public class CitaPersistenceAdapter implements CitaOutputPort {
                citaRepository.findFirstByNombrePacienteOrderByFechaConsultaDescHoraConsultaDesc(nombrePaciente)
                        .orElse(null)
         );
+    }
+
+    @Override
+    public Cita findSecondLastCitaPaciente(String nombrePaciente) {
+
+        Pageable limit = PageRequest.of(0, 2);
+        List<CitaEntity> citas = citaRepository.findByNombrePacienteOrderByFechaConsultaDescHoraConsultaDesc(
+                nombrePaciente,
+                limit
+        );
+
+        if (citas.size() >= 2) {
+            return citaMapper.toDomain(citas.get(1));
+        }
+
+        return null;
     }
 }

@@ -1,24 +1,25 @@
 package com.kosmos.consultorio.domain.service;
 
 import com.kosmos.consultorio.application.port.input.CreateCitaUseCase;
+import com.kosmos.consultorio.application.port.input.GetCitaUseCase;
 import com.kosmos.consultorio.application.port.input.UpdateCitaUseCase;
 import com.kosmos.consultorio.application.port.output.CitaOutputPort;
 import com.kosmos.consultorio.domain.error.exceptions.PreconditionFailedException;
 import com.kosmos.consultorio.domain.model.Cita;
 import com.kosmos.consultorio.domain.model.request.CitaRequest;
 import com.kosmos.consultorio.domain.model.response.CitaCompletaResponse;
-import com.kosmos.consultorio.domain.model.response.CitaResponse;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.beanvalidation.SpringValidatorAdapter;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class CitaService implements
         CreateCitaUseCase,
-        UpdateCitaUseCase
+        UpdateCitaUseCase,
+        GetCitaUseCase
 {
     private final CitaOutputPort citaOutputPort;
 
@@ -29,22 +30,23 @@ public class CitaService implements
     @Override
     public Integer createCita(CitaRequest cita) {
 
-        checkCitaSchedulable(cita);
+        checkCitaSchedulable(null, cita);
         return citaOutputPort.addCita(cita);
     }
 
     @Override
     public void updateCita(Integer idCita, CitaRequest cita){
 
-        checkCitaSchedulable(cita);
+        checkCitaSchedulable(idCita, cita);
         citaOutputPort.updateCita(idCita, cita);
     }
 
     @Override
     public List<CitaCompletaResponse> getCita(LocalDate fecha, Integer numeroConsultorio, String nombreDoctor){
+        return new ArrayList<>();
     }
 
-    private void checkCitaSchedulable(CitaRequest cita){
+    private void checkCitaSchedulable(Integer idCita, CitaRequest cita){
 
         if(!citaOutputPort.isConsultorioAvailable(cita.idConsultorio(), cita.fechaConsulta(), cita.horaConsulta())){
             throw new PreconditionFailedException("El consultorio ya se encuentra reservado.");
@@ -54,14 +56,23 @@ public class CitaService implements
             throw new PreconditionFailedException("El doctor ya cuenta con una cita en ese horario.");
         }
 
-        if(!isPacienteSchedulable(cita.nombrePaciente(), cita.fechaConsulta(), cita.horaConsulta())){
+        if(!isPacienteSchedulable(idCita, cita.nombrePaciente(), cita.fechaConsulta(), cita.horaConsulta())){
             throw new PreconditionFailedException("El paciente no puede ser agendado, debe esperar para poder re-agender.");
         }
     }
 
-    private Boolean isPacienteSchedulable(String nombrePaciente, LocalDate fechaConsulta, LocalTime horaConsulta){
+    private Boolean isPacienteSchedulable(Integer idCita, String nombrePaciente, LocalDate fechaConsulta, LocalTime horaConsulta){
 
-        Cita lastCita = citaOutputPort.findLastCitaPaciente(nombrePaciente);
+        Cita lastCita;
+        if(idCita == null){
+            lastCita = citaOutputPort.findLastCitaPaciente(nombrePaciente);
+        }else{
+            lastCita = citaOutputPort.findSecondLastCitaPaciente(nombrePaciente);
+
+            if(lastCita == null){
+                return true;
+            }
+        }
 
         if(lastCita != null &&
            lastCita.getFechaConsulta().equals(fechaConsulta) &&

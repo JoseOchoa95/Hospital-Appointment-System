@@ -1,4 +1,4 @@
-package com.kosmos.consultorio.init;
+package com.kosmos.consultorio.infrastructure.adpter.persistence.init;
 
 import com.kosmos.consultorio.infrastructure.adpter.persistence.entity.ConsultorioEntity;
 import com.kosmos.consultorio.infrastructure.adpter.persistence.entity.DoctorEntity;

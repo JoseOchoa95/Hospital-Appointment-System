@@ -19,4 +19,6 @@ public interface CitaOutputPort {
     Boolean isDoctorAvailable(Integer idDoctor, LocalDate fecha, LocalTime horario);
 
     Cita findLastCitaPaciente(String nombrePaciente);
+
+    Cita findSecondLastCitaPaciente(String nombrePaciente);
 }
