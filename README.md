@@ -1,7 +1,7 @@
 # Sistema de Gestión de Citas Médicas 🏥
 
 [![Java](https://img.shields.io/badge/Java-21-blue.svg)](https://www.java.com/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.2.0-brightgreen.svg)](https://spring.io/projects/spring-boot)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.5-brightgreen.svg)](https://spring.io/projects/spring-boot)
 
 Sistema web para gestionar citas médicas en un hospital, desarrollado con Spring Boot siguiendo el patrón APIRestfull y arquitectura hexagonal con enfoque DDD.
 
