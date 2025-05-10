@@ -100,9 +100,10 @@ public class CitaPersistenceAdapter implements CitaOutputPort {
     }
 
     @Override
-    public List<CitaResponse> findCitaByFechaAndConsultorioAndDoctor(Integer idDoctor, Integer idConsultorio, LocalDate fecha, LocalTime hora) {
+    public List<CitaResponse> findCitaByFechaAndConsultorioAndDoctor(Integer idDoctor, Integer idConsultorio,
+    LocalDate fecha, LocalTime hora, String nombrePaciente) {
         return citaRepository
-                .findByIdDoctorAndIdConsultorioAndFechaConsultaAndHoraConsulta(idDoctor, idConsultorio, fecha, hora)
+                .findByIdDoctorAndIdConsultorioAndFechaConsultaAndHoraConsulta(idDoctor, idConsultorio, fecha, hora, nombrePaciente)
                 .stream()
                 .map(CitaResponse::toResponse)
                 .toList();

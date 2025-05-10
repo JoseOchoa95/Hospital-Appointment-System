@@ -50,11 +50,9 @@ public class CitaService implements
     }
 
     @Override
-    public List<CitaCompletaResponse> getCita(Integer idDoctor, Integer idConsultorio, LocalDate fecha, LocalTime hora){
+    public List<CitaResponse> getCita(Integer idDoctor, Integer idConsultorio, LocalDate fecha, LocalTime hora, String nombrePaciente){
 
-        List<CitaResponse> list = citaOutputPort.findCitaByFechaAndConsultorioAndDoctor(idDoctor, idConsultorio, fecha, hora);
-
-        return new ArrayList<>();
+        return citaOutputPort.findCitaByFechaAndConsultorioAndDoctor(idDoctor, idConsultorio, fecha, hora, nombrePaciente);
     }
 
     private void checkCitaSchedulable(Integer idCita, CitaRequest cita){

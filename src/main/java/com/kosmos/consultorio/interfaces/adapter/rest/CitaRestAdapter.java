@@ -5,11 +5,13 @@ import com.kosmos.consultorio.application.port.input.DeleteCitaUseCase;
 import com.kosmos.consultorio.application.port.input.GetCitaUseCase;
 import com.kosmos.consultorio.application.port.input.UpdateCitaUseCase;
 import com.kosmos.consultorio.domain.model.request.CitaRequest;
+import com.kosmos.consultorio.domain.model.response.CitaResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/cita")
@@ -52,13 +54,13 @@ public class CitaRestAdapter {
     }
 
     @GetMapping("/buscar")
-    public ResponseEntity<Void> getCita(
+    public ResponseEntity<List<CitaResponse>> getCita(
             @RequestParam(required = false) Integer idDoctor,
             @RequestParam(required = false) Integer idConsultorio,
             @RequestParam(required = false) LocalDate fecha,
-            @RequestParam(required = false) LocalTime hora
+            @RequestParam(required = false) LocalTime hora,
+            @RequestParam(required = false) String nombrePaciente
     ){
-        getCitaUseCase.getCita(idDoctor, idConsultorio, fecha, hora);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(getCitaUseCase.getCita(idDoctor, idConsultorio, fecha, hora, nombrePaciente));
     }
 }

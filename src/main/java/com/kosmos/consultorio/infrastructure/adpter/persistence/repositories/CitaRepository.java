@@ -49,6 +49,7 @@ public interface CitaRepository extends JpaRepository<CitaEntity, Integer> {
             Integer idDoctor,
             Integer idConsultorio,
             LocalDate fechaConsulta,
-            LocalTime horaConsulta
+            LocalTime horaConsulta,
+            String nombrePaciente
     );
 }

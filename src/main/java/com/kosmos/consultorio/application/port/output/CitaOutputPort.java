@@ -24,5 +24,5 @@ public interface CitaOutputPort {
 
     Cita findSecondLastCitaPaciente(String nombrePaciente);
 
-    List<CitaResponse> findCitaByFechaAndConsultorioAndDoctor(Integer idDoctor, Integer idConsultorio, LocalDate fecha, LocalTime hora);
+    List<CitaResponse> findCitaByFechaAndConsultorioAndDoctor(Integer idDoctor, Integer idConsultorio, LocalDate fecha, LocalTime hora, String nombrePaciente);
 }
